@@ -23,12 +23,28 @@
 2. 使用 Unity Editor 打开项目 `./Hololens2Test`
 3. 打开创景 `./Hololens2Test/Asserts/Scene/Hololen2Test.unity`
 4. 在层级目录中找到对象 `SimpleTcpClientObject` 并配置其 Host 属性（与主机 IP 地址一致）
-5. 参考 [./README_ZH.md](./README_ZH.md) 或者 [./README_EN.md](./README_EN.md) 中的步骤，编译并启动项目。
+5. 编译、部署、启动项目：
+    - 参考 [./README_ZH.md](./README_ZH.md) 中 “部署项目到 Hololens2” 
+    - 或者 [./README_EN.md](./README_EN.md) 中 “Deploy the Project to HoloLens 2”
 
 ## 自己实现时的一些注意事项
+
+> [!TIP]
+> 常见编译错误请参考：
+> - [./README_ZH.md](./README_ZH.md) 中 “编译报错的常见解决方案”
+> - 或者 [./README_EN.md](./README_EN.md) “Common Solutions to Compilation Errors”
 
 如果您打算自己实现 TCP 连接功能，记得做如下处理：
 1. 检查 File → Build Settings → Player Settings（UWP）→ Publishing Settings → Capabilities
     - 需要勾选 InternetClientServer 与 PrivateNetworkClientServer
 2. 如果你忘记了做 1 就已经编译过一次了，需要将上次编译的项目删除再重新编译
     - 否则 `.sln` 中的 `Package.appxmanifest` 可能不会被覆盖
+
+## 本项目所使用的一些内容
+
+- simple_tcp_server_cs：dotnet/unity 通用的 TCP 客户端服务端框架
+    - https://github.com/GGN-2015/simple_tcp_server_cs
+- simple_tcp_server：python 的 TCP 客户端服务端框架
+    - https://github.com/GGN-2015/simple_tcp_server
+- Unity + hololens2 + MRTK3 项目模板
+    - https://github.com/GGN-2015/unity-hololens2-project-template
