@@ -38,16 +38,35 @@ public class SimpleTcpClientObject : MonoBehaviour
         _daemonThread.Start();
     }
 
+    /// <summary>
+    /// 开始高精度计时
+    /// </summary>
+    public static System.Diagnostics.Stopwatch StartStopwatch()
+    {
+        return System.Diagnostics.Stopwatch.StartNew();
+    }
+
+    /// <summary>
+    /// 获取耗时（毫秒）
+    /// </summary>
+    public static long GetElapsedMs(System.Diagnostics.Stopwatch sw)
+    {
+        return sw.ElapsedMilliseconds;
+    }
+
     // 子线程 无限循环守护逻辑
     private void BackgroundDaemonLoop()
     {
         while (_isRunning)
         {
+            System.Diagnostics.Stopwatch stop_watch = StartStopwatch();
             byte[] sample_text = _client.Request(System.Text.Encoding.UTF8.GetBytes("time"));
+            long elapsedMs = GetElapsedMs(stop_watch);
+
             if (sample_text != null)
             {
                 string response = System.Text.Encoding.UTF8.GetString(sample_text);
-                _latestMessageHolder.Set(response);
+                _latestMessageHolder.Set(response + $" ({elapsedMs} ms)");
             }
             Thread.Sleep(100);
         }

@@ -16,4 +16,5 @@ def time_server_worker(msg: bytes) -> bytes:
 
 server = SimpleTcpServer(
     HOST, PORT, time_server_worker, quit_token=b"quit")
+
 server.mainloop()
