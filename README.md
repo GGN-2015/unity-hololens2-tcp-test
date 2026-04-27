@@ -24,3 +24,11 @@
 3. 打开创景 `./Hololens2Test/Asserts/Scene/Hololen2Test.unity`
 4. 在层级目录中找到对象 `SimpleTcpClientObject` 并配置其 Host 属性（与主机 IP 地址一致）
 5. 参考 [./README_ZH.md](./README_ZH.md) 或者 [./README_EN.md](./README_EN.md) 中的步骤，编译并启动项目。
+
+## 自己实现时的一些注意事项
+
+如果您打算自己实现 TCP 连接功能，记得做如下处理：
+1. 检查 File → Build Settings → Player Settings（UWP）→ Publishing Settings → Capabilities
+    - 需要勾选 InternetClientServer 与 PrivateNetworkClientServer
+2. 如果你忘记了做 1 就已经编译过一次了，需要将上次编译的项目删除再重新编译
+    - 否则 `.sln` 中的 `Package.appxmanifest` 可能不会被覆盖
