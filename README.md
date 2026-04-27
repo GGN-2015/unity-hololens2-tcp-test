@@ -48,3 +48,9 @@
     - https://github.com/GGN-2015/simple_tcp_server
 - Unity + hololens2 + MRTK3 项目模板
     - https://github.com/GGN-2015/unity-hololens2-project-template
+
+## 网络延迟
+
+- 在 5G WIFI 局域网中
+    - 静止状态，测得平均延迟 `15ms`
+    - 剧烈运动会显著影响延迟
