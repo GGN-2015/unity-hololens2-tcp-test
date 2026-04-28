@@ -56,4 +56,14 @@
     - 剧烈运动会显著影响延迟
 - 使用 Hololens2 自带的数据线测试（USB Ethernet）
     - 平均延时 `2ms`
-    - 最大延时不超过 `5ms`
+    - 最大延时通常不超过 `5ms`
+
+## 如何制作可以用手操作的模型
+
+1. 拖拽 OBJ 文件进入 Asserts 框
+2. 将 Asserts 框中的 OBJ 模型拖拽到层次结构中
+3. 在层次结构中，找到该 OBJ 模型对应的对象（一般是父子两个对象一组，取父对象）
+4. 给 OBJ 对象添加 Mesh Collision/Box Coliision 脚本（确定绿色线框包裹了）
+    - Mesh Collision 记得选择正确的 Mesh 类型（一般取对象自身即可）
+    - Mesh Collision 需要勾选 Convex
+5. 给 OBJ 对象添加 Object Manipulator 脚本
